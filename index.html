@@ -18,13 +18,67 @@
     text-align: center;
     padding: 2rem;
   }
+  .avatar {
+    width: 200px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .avatar:hover { transform: scale(1.1); }
+  .avatar img {
+    width: 100%;
+    border-radius: 50%;
+    animation: spin 6s linear infinite;
+    display: block;
+  }
   h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
   p { color: #999; }
+  #quote { min-height: 1.5rem; color: yellow; font-weight: bold; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .marquee {
+    width: 100%;
+    background: yellow;
+    color: red;
+    font-weight: bold;
+    font-size: clamp(1rem, 4vw, 1.6rem);
+    padding: 0.3rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 4px dashed red;
+  }
+  .marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 8s linear infinite;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 </style>
 </head>
 <body>
+  <div class="marquee"><span>🚨 WANTED: JAMES DUGLE FOR CRIMES AGAINST HUMANITY 🚨 &nbsp; HIS APP ALSO SUCKS &nbsp; 🚨 SIGN THE PETITION (there is no petition) 🚨 &nbsp;</span></div>
+  <div class="avatar" onclick="showQuote()">
+    <img src="dugle.jpg" alt="James Dugle">
+  </div>
+  <p id="quote">&nbsp;</p>
   <h1>James Dugle Hate Club</h1>
   <p>Membership: open. Dues: none. Grievances: many.</p>
   <p>(Moves also sucks)</p>
+  <script>
+    const quotes = [
+      "Meet me at 606",
+      "Lets get some fucking wings!",
+      "I just got mogged by a 15 year old...",
+      "Anyone see kaitlyn?",
+      "I miss Jon",
+      "So do you guys like my titan set?"
+    ];
+    function showQuote() {
+      document.getElementById("quote").textContent =
+        quotes[Math.floor(Math.random() * quotes.length)];
+    }
+  </script>
 </body>
 </html>
